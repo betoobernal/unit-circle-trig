@@ -1,6 +1,12 @@
 let a = 0;
 const RADIO = 600 / 4;
 
+const sinEl = document.getElementById('sin');
+const cosEl = document.getElementById('cos');
+const tanEl = document.getElementById('tan');
+const cotEl = document.getElementById('cot');
+const angEl = document.getElementById('angle');
+
 function paintLines() {
   // Side lines
   line(0, 0, 600, 0);
@@ -19,7 +25,6 @@ function paintLines() {
 function setup() {
   createCanvas(600, 600);
   paintLines()
-
 }
 
 function draw() {
@@ -29,13 +34,21 @@ function draw() {
 
   paintLines();
   translate(width / 2, height / 2);
-  let a = atan2(mouseY - height / 2, mouseX - width / 2);
+  scale(1, -1)
+  let a = -1 * atan2(mouseY - height / 2, mouseX - width / 2);
 
   const COS = cos(a) * RADIO;
   const SIN = sin(a) * RADIO;
   const TAN = tan(a) * RADIO;
+  const COT = (cos(a) / sin(a)) * RADIO;
 
-  console.log('tan', TAN)
+  // write values
+  angEl.textContent = degrees(a).toFixed(0) + '%'
+  sinEl.textContent = (SIN / RADIO).toFixed(2);
+  cosEl.textContent = (COS / RADIO).toFixed(2);
+  tanEl.textContent = (SIN / RADIO).toFixed(4) === '1.0000' ? 'ind' : (TAN / RADIO).toFixed(2);
+  cotEl.textContent = (COS / RADIO).toFixed(4) === '1.0000' ? 'ind' : (COT / RADIO).toFixed(2);
+
   // Radio Line
   line(0, 0, COS, SIN);
 
@@ -45,8 +58,14 @@ function draw() {
   // Tangent Line
   line(RADIO, 0, RADIO, TAN)
 
+  // Cotangent Line
+  line(0, RADIO, COT, RADIO)
+
   // Exsecante Line
   line(COS, SIN, RADIO, TAN)
+
+  // Excosecante Line
+  line(COS, SIN, COT, RADIO)
 
   stroke('purple');
   strokeWeight(10);
@@ -58,5 +77,9 @@ function draw() {
   stroke('pink')
   point(RADIO, 0)
   point(RADIO, TAN)
+
+  stroke('red')
+  point(0, RADIO)
+  point(COT, RADIO)
 
 }
