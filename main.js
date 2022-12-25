@@ -67,6 +67,12 @@ function draw() {
   // Excosecante Line
   line(COS, SIN, COT, RADIO)
 
+  // arc
+  stroke(100)
+  strokeWeight(3);
+  arc(0, 0, 80, 80, 0, a);
+  noFill();
+
   stroke('purple');
   strokeWeight(10);
   point(COS, 0)
