@@ -1,0 +1,15 @@
+{
+  "name": "p5-trig",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elkin Bernal",
+  "license": "ISC",
+  "dependencies": {
+    "p5": "^1.5.0"
+  },
+  "type": "module"
+}
