@@ -4,3 +4,14 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.values {
+  width: 100px;
+  margin-left: 100px;
+}
