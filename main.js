@@ -30,14 +30,33 @@ function draw() {
   paintLines();
   translate(width / 2, height / 2);
   let a = atan2(mouseY - height / 2, mouseX - width / 2);
-  line(0, 0, cos(a) * RADIO, sin(a) * RADIO);
-  line(cos(a) * RADIO, 0, cos(a) * RADIO, sin(a) * RADIO)
+
+  const COS = cos(a) * RADIO;
+  const SIN = sin(a) * RADIO;
+  const TAN = tan(a) * RADIO;
+
+  console.log('tan', TAN)
+  // Radio Line
+  line(0, 0, COS, SIN);
+
+  // Sin Line
+  line(COS, 0, COS, SIN)
+
+  // Tangent Line
+  line(RADIO, 0, RADIO, TAN)
+
+  // Exsecante Line
+  line(COS, SIN, RADIO, TAN)
 
   stroke('purple');
   strokeWeight(10);
-  point(cos(a) * RADIO, 0)
+  point(COS, 0)
 
   stroke('orange');
-  point(cos(a) * RADIO, sin(a) * RADIO)
+  point(COS, SIN)
+
+  stroke('pink')
+  point(RADIO, 0)
+  point(RADIO, TAN)
 
 }
